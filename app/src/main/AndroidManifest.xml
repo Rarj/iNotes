@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.INotes">
         <activity
-            android:name=".create.CreateNoteActivity"
+            android:name="rio.arj.inotes.features.create.CreateNoteActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".main.MainActivity"
+            android:name="rio.arj.inotes.features.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

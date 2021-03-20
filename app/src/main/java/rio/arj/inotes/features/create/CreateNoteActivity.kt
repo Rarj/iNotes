@@ -1,4 +1,4 @@
-package rio.arj.inotes.create
+package rio.arj.inotes.features.create
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
