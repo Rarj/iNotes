@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.INotes">
         <activity
+            android:name=".create.CreateNoteActivity"
+            android:exported="true"></activity>
+        <activity
             android:name=".main.MainActivity"
             android:exported="true">
             <intent-filter>
