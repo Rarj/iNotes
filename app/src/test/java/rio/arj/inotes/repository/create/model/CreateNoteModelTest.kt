@@ -1,4 +1,4 @@
-package rio.arj.inotes.repository.model
+package rio.arj.inotes.repository.create.model
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -34,6 +34,7 @@ class CreateNoteModelTest {
     @Test
     fun `Return True When Title Reach 50Chars Or More`() {
         val model = CreateNoteModel(
+            id = "1",
             title = "12345678901234567890123456789012345678901234567890",
             content = "Content Notes"
         )
@@ -44,6 +45,7 @@ class CreateNoteModelTest {
     @Test
     fun `Return False When Title Smaller 50Chars`() {
         val model = CreateNoteModel(
+            id = "1",
             title = "1234567890123456789012345678901234567890123456789",
             content = "Content Notes"
         )
@@ -54,6 +56,7 @@ class CreateNoteModelTest {
     @Test
     fun `Return True When Content Reach 2500chars Or More`() {
         val model = CreateNoteModel(
+            id = "1",
             title = "Rio's Financial Planning",
             content = content2499 + "1"
         )
@@ -64,6 +67,7 @@ class CreateNoteModelTest {
     @Test
     fun `Return False When Content Smaller 2500chars`() {
         val model = CreateNoteModel(
+            id = "1",
             title = "Rio's Financial Planning",
             content = content2499
         )
@@ -74,6 +78,7 @@ class CreateNoteModelTest {
     @Test
     fun `Should Return True When Title & Content Smaller Maximum Chars`() {
         val model = CreateNoteModel(
+            id = "1",
             title = "Title Smaller Max Chars",
             content = "Content Smaller Max Chars"
         )
@@ -84,6 +89,7 @@ class CreateNoteModelTest {
     @Test
     fun `Should Return False When Title & Content Reach Maximum Chars`() {
         val model = CreateNoteModel(
+            id = "1",
             title = "12345678901234567890123456789012345678901234567890",
             content = content2499 + "1"
         )

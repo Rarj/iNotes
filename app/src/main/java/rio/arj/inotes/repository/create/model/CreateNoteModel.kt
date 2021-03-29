@@ -1,6 +1,7 @@
-package rio.arj.inotes.repository.model
+package rio.arj.inotes.repository.create.model
 
 data class CreateNoteModel(
+    val id: String,
     val title: String,
     val content: String,
     val dateCreated: String = System.currentTimeMillis().toString()
