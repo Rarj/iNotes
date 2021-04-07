@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+  <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="24dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/background_notes"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:shapeAppearanceOverlay="@style/roundedImageView"
+      tools:background="@android:color/holo_orange_light" />
+
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/text_title"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="8dp"
+      android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+      android:textColor="@color/black"
+      app:layout_constraintBottom_toTopOf="@id/text_create_date"
+      app:layout_constraintEnd_toEndOf="@id/background_notes"
+      app:layout_constraintStart_toStartOf="@id/background_notes"
+      app:layout_constraintTop_toTopOf="@id/background_notes"
+      tools:text="@tools:sample/cities" />
+
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/text_create_date"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+      android:textColor="@color/black_6D6D6D"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@id/text_title"
+      app:layout_constraintStart_toStartOf="@id/text_title"
+      app:layout_constraintTop_toBottomOf="@id/text_title"
+      tools:text="@tools:sample/date/day_of_week" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
