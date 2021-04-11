@@ -6,4 +6,9 @@
     <item name="cornerSize">15%</item>
   </style>
 
+  <style name="FloatingActionButton">
+    <item name="colorSecondary">@color/black_222222</item>
+    <item name="colorOnSecondary">@color/white</item>
+  </style>
+
 </resources>
