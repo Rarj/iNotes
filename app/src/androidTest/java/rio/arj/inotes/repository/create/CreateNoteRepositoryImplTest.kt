@@ -2,6 +2,7 @@ package rio.arj.inotes.repository.create
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,8 +18,8 @@ class CreateNoteRepositoryImplTest {
   private val daoCreateNoteMock = mock(CreateNoteDao::class.java)
   private val daoListNoteMock = mock(ListNoteDao::class.java)
 
-  lateinit var repo: CreateNoteRepositoryImpl
-  lateinit var repoList: ListNoteRepositoryImpl
+  private lateinit var repo: CreateNoteRepositoryImpl
+  private lateinit var repoList: ListNoteRepositoryImpl
 
   @Before
   fun setup() {
@@ -37,6 +38,23 @@ class CreateNoteRepositoryImplTest {
     repo.createNewNotes(expect)
 
     verify(daoCreateNoteMock, times(1)).insertNote(expect)
+  }
+
+  @Test
+  fun list_should_return_inserted_note() = runBlocking {
+    val expect = CreateNoteEntity(
+      title = "Diary",
+      content = "Content",
+      dateCreate = System.currentTimeMillis().toString()
+    )
+
+    repo.createNewNotes(expect)
+    verify(daoCreateNoteMock, times(1)).insertNote(expect)
+
+    `when`(repoList.getAllNotes()).thenReturn(listOf(expect))
+
+    val isContainExpectNote = daoListNoteMock.getAllNotes().contains(expect)
+    assertTrue(isContainExpectNote)
   }
 
 }
