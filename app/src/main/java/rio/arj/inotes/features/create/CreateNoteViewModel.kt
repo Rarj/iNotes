@@ -1,6 +1,7 @@
 package rio.arj.inotes.features.create
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
@@ -11,7 +12,12 @@ import rio.arj.inotes.repository.create.model.CreateNoteModel
 
 class CreateNoteViewModel(private val daoCreateNote: CreateNoteDao) : ViewModel() {
 
-//  var createModel = MutableLiveData<CreateNoteModel>()
+  var createModel = MutableLiveData<CreateNoteModel>()
+    private set
+
+  var isValidToSave = Transformations.map(createModel) {
+    false
+  }
 
   private val repo = CreateNoteRepositoryImpl(daoCreateNote)
 
