@@ -8,10 +8,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.*
-import org.mockito.MockitoAnnotations
+import org.mockito.Mockito.times
+import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 import rio.arj.inotes.database.dao.CreateNoteDao
+import rio.arj.inotes.repository.create.model.CreateNoteModel
 
 @RunWith(MockitoJUnitRunner::class)
 class CreateNoteViewModelTest {
@@ -22,25 +23,22 @@ class CreateNoteViewModelTest {
   @Mock
   lateinit var daoCreateNote: CreateNoteDao
 
-  lateinit var viewModel: CreateNoteViewModel
+  private lateinit var viewModel: CreateNoteViewModel
 
   @Mock
   lateinit var observerButtonSave: Observer<Boolean>
 
   @Before
   fun setup() {
-    MockitoAnnotations.initMocks(this)
     viewModel = CreateNoteViewModel(daoCreateNote)
 
+    viewModel.isValidToSave.observeForever(observerButtonSave)
   }
 
   @Test
   fun button_will_triggered_when_title_changed() = runBlocking {
-    viewModel.isValidToSave.observeForever(observerButtonSave)
-
-    `when`(viewModel.createModel.value).thenReturn(any())
-
-    verify(observerButtonSave).onChanged(true)
+    viewModel.createModel.value = CreateNoteModel("1", "First Note", "Content Notes")
+    verify(observerButtonSave, times(1)).onChanged(true)
   }
 
 }

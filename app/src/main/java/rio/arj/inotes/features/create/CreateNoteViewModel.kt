@@ -16,7 +16,7 @@ class CreateNoteViewModel(private val daoCreateNote: CreateNoteDao) : ViewModel(
     private set
 
   var isValidToSave = Transformations.map(createModel) {
-    false
+    it.title.isNotEmpty() && it.content.isNotEmpty()
   }
 
   private val repo = CreateNoteRepositoryImpl(daoCreateNote)
